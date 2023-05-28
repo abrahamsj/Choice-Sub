@@ -143,32 +143,52 @@ Prepare yourself, adventurer, as you step into this extraordinary world teeming 
 
             totalPossible+=2 #tally of correct answers' points - Smart path
             
+            if totalPossible == points:
+                #all correct correct - Smart path
+                pass
+            elif points %2 == 0:
+                #even numbers are possible full score - mercenary/villain
+                pass
+            elif points %2 != 0:
+                #odd number possible incorrect answer -friend/hero
+                pass
+
+
+            # CREATING QUESTS
         
         def Smart_Quest(self):
-            pass
+            smartQ_welcome ="""
+     Welcome, Knowledge-Seeker!\n
+    Your responses to the initial questions have revealed your exceptional intellect and thirst for knowledge.\n
+    As such, you are deemed worthy to embark on a quest to attain even greater wisdom that shall serve you well in your new life.\n
+    Your insatiable curiosity and cultivated resilience will be invaluable assets in your endeavors.\n
+    Prepare yourself, for the challenges that lie ahead will test your intellect, reasoning, and problem-solving abilities.\n
+    May you emerge from this quest not only with knowledge but also with a profound understanding of the world around you.
+    Let the pursuit of wisdom guide you as you step into the realm of endless possibilities!\n
+            """
+
+            easygui.msgbox(smartQ_welcome, "Story")
+
+            # CONTINUE WITH THE QUEST CONTENT
+            
 
 
         def Mercenary_Quest(self):
+            #ADD WELCOME MESSAGE + QUEST CONTENT
             pass
 
         def Heroic_Quest(self):
+             #ADD WELCOME MESSAGE + QUEST CONTENT
             pass
 
         def Villain_Quest(self):
+             #ADD WELCOME MESSAGE + QUEST CONTENT
             pass
 
 
 
 
-        if totalPossible == points:
-            #all correct correct - Smart path
-            pass
-        elif points %2 == 0:
-            #even numbers are possible full score - mercenary/villain
-            pass
-        elif points %2 != 0:
-            #odd number possible incorrect answer -friend/hero
-            pass
+        
         
         
         
