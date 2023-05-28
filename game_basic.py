@@ -14,6 +14,10 @@ quest
         -depends on answers to the previous questions
         - branch: for friend
 
+Stretch Goal: Background music
+EXTRA Stretch Goal : visuals
+Longshot: make available online 
+
 """
 import random
 import easygui
@@ -87,9 +91,6 @@ questions_answers = [
 ]
 
 
-def placeholder(word):
-    "-"*len(word)
-
 class Player:
     def __init__(self):
         self.name = ""
@@ -123,19 +124,56 @@ Prepare yourself, adventurer, as you step into this extraordinary world teeming 
         self.Quest()
 
     def Quest_Branching_Initial(self):
-        question_dict = random.choice(questions_answers)
-        branching_question = question_dict['question']
-        branching_User_answer = easygui.enterbox(question_dict['question'], title='Input')
+        correct_answers = 0  # Track the number of correct answers
 
-        if branching_User_answer.lower() == question_dict['answer'].lower():
-            easygui.msgbox("Your answer was correct!", title='Information')
-            points += 2
-        else:
-            easygui.msgbox("Your answer was incorrect! Good luck on the next question", title='Information')
-            self.Quest_Branching_Initial()
-            points +=1
+        #loops until user gets atleast two correct answer   
+        while correct_answers < 2: 
+            question_dict = random.choice(questions_answers)
+            branching_question = question_dict['question']
+            branching_User_answer = easygui.enterbox(question_dict['question'], title='Input')
 
-        totalPossible += 2
+            if branching_User_answer.lower() == question_dict['answer'].lower():
+                easygui.msgbox("Your answer was correct!", title='Information')
+                points += 2
+                correct_answers += 1  # Increment the correct answers count
+            else:
+                easygui.msgbox("Your answer was incorrect! Good luck on the next question", title='Information')
+                self.Quest_Branching_Initial()
+                points +=1
+
+            totalPossible+=2 #tally of correct answers' points - Smart path
+            
+        
+        def Smart_Quest(self):
+            pass
+
+
+        def Mercenary_Quest(self):
+            pass
+
+        def Heroic_Quest(self):
+            pass
+
+        def Villain_Quest(self):
+            pass
+
+
+
+
+        if totalPossible == points:
+            #all correct correct - Smart path
+            pass
+        elif points %2 == 0:
+            #even numbers are possible full score - mercenary/villain
+            pass
+        elif points %2 != 0:
+            #odd number possible incorrect answer -friend/hero
+            pass
+        
+        
+        
+
+        
 
 
     
