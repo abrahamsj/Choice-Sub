@@ -63,17 +63,16 @@ class SmartQuest:
                     pass  # Handle "Historical Enigmas" quest
 
 
-def generate_anagram_question():
-    url = "https://www.wordplays.com/anagrammer"
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            word = response.text.strip()
-            return word
-        else:
-            return None
-    except requests.exceptions.RequestException as e:
-        print("An error occurred:", e)
+def generate_anagram_question(): #API KEY PENDING
+    url = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minLength=5&maxLength=10&api_key=YOUR_API_KEY"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+        anagram = data["word"]
+        word = anagram.upper()
+        return word
+    else:
         return None
 
 
