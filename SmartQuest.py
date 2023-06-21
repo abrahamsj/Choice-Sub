@@ -1,5 +1,6 @@
 import easygui
 import requests
+import random
 
 
 class SmartQuest:
@@ -64,7 +65,7 @@ class SmartQuest:
 
 
 def generate_anagram_question(): #API KEY PENDING
-    url = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minLength=5&maxLength=10&api_key=YOUR_API_KEY"
+    url = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&includePartOfSpeech=noun&minLength=5&maxLength=10&api_key=dc6ztwsvejqd5gteb9srdkmh16ph6sa399dsawpurhitw4gpd"
     response = requests.get(url)
 
     if response.status_code == 200:
@@ -74,11 +75,29 @@ def generate_anagram_question(): #API KEY PENDING
         return word
     else:
         return None
+    
+
+
+
+
+
+def scramble_word(word):
+    # Convert the word into a list of characters
+    characters = list(word)
+    
+    # Randomly shuffle the characters
+    random.shuffle(characters)
+    
+    # Join the shuffled characters back into a string
+    scrambled_word = ''.join(characters)
+    
+    return scrambled_word
+
 
 
 def solve_anagram_question(question):
     if question:
-        user_answer = easygui.enterbox(f"Unscramble the word: {question}", title="Puzzle Question")
+        user_answer = easygui.enterbox(f"Unscramble the word: {scramble_word(question)}", title="Puzzle Question")
         user_answer = user_answer.upper()
 
         if user_answer == question:
