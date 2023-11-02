@@ -24,7 +24,7 @@ quest
     - heroic
         - doesn't see villan path
         - half or more of total possible scores from initial questions
-    - smart
+    - smart CURRENTLY AT THE SMART QUEST BRANCHING
         - see all path
         - all possible scores from intial questions 
     - Mercenary 
